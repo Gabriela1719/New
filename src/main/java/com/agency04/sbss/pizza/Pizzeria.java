@@ -1,9 +1,9 @@
 package com.agency04.sbss.pizza;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import javax.annotation.PreDestroy;
 
-@Component
+//@Component
 public class Pizzeria implements PizzeriaService
 {
     @Value("${foo.name}")

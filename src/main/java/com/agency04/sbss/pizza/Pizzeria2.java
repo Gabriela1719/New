@@ -3,7 +3,7 @@ package com.agency04.sbss.pizza;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Pizzeria2 implements PizzeriaService
 {
     PizzeriaService pizzeriaService;

@@ -1,5 +1,6 @@
 package com.agency04.sbss.pizza;
 
+
 public class Margarita implements Pizza
 {
     private String name;
@@ -12,6 +13,6 @@ public class Margarita implements Pizza
 
     @Override
     public String getIngredients() {
-        return this.ingredients = ingredients;
+        return this.ingredients = "Tomato sauce, mozzarella, and oregano";
     }
 }
