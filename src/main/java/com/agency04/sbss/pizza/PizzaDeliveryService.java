@@ -1,28 +1,31 @@
 package com.agency04.sbss.pizza;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 public class PizzaDeliveryService
 {
+    @Autowired
+    @Qualifier("pizzeria")
     PizzeriaService pizzeriaService;
+
     public PizzaDeliveryService(PizzeriaService _pizzeriaService)
     {
         this.pizzeriaService = _pizzeriaService;
     }
 
-    public PizzaDeliveryService() {
-    }
-    Pizza pizza;
-    public String orderPizza(Pizza p)
+
+    public String orderPizza(Pizza pizza)
     {
-        this.pizza = p;
-        return p.getName()+" "+p.getIngredients();
+        return pizzeriaService.makePizza(pizza) + "Your order should arrive soon";
     }
     @PostConstruct
     public void order()
     {
-        System.out.println("Your order is");
+        System.out.println("Your order is preparing");
     }
 
     @PreDestroy

@@ -23,7 +23,7 @@ public class Pizzeria implements PizzeriaService
     }
 
     @Override
-    public String makePizza(Pizza p) {
-        return makePizza(p);
+    public String makePizza(Pizza pizza) {
+        return getName() + " (" + getAdress() + ") \n" + pizza.getName()+"-"+pizza.getIngredients() +"\n";
     }
 }
