@@ -20,11 +20,20 @@ public class PizzaDeliveryService
         this.pizzeriaService = pizzeriaService;
     }
 
-    Pizza pizza;
-    public String orderPizza(Pizza p)
+    public String orderPizza(Pizza pizza)
     {
-        this.pizza = p;
-        return p.getName()+" "+p.getIngredients();
+        return pizzeriaService.makePizza(pizza) + "Your order should arrive soon";
+    }
+    @PostConstruct
+    public void order()
+    {
+        System.out.println("Your order is");
+    }
+
+    @PreDestroy
+    public void orderData()
+    {
+        System.out.println("Your order has been received");
     }
 
 }
