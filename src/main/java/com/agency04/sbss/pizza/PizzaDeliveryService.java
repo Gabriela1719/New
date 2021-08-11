@@ -11,14 +11,13 @@ public class PizzaDeliveryService
     @Autowired
     @Qualifier("pizzeria")
     PizzeriaService pizzeriaService;
+
     public PizzaDeliveryService(PizzeriaService _pizzeriaService)
     {
         this.pizzeriaService = _pizzeriaService;
     }
-    @Autowired
-    public void setPizzeriaService(@Qualifier("pizzeria2") PizzeriaService pizzeriaService) {
-        this.pizzeriaService = pizzeriaService;
-    }
+    public PizzaDeliveryService(){}
+   
 
     public String orderPizza(Pizza pizza)
     {
