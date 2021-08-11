@@ -22,9 +22,9 @@ public class Pizzeria2 implements PizzeriaService
         return adress;
     }
 
-    @Override
-    public String makePizza(Pizza p) {
-        return makePizza(p);
+   @Override
+    public String makePizza(Pizza pizza) {
+        return "\n'" + getName() + "' (" + getAdress() + ") is preparing your order: \n" + pizza;
     }
 }
 
