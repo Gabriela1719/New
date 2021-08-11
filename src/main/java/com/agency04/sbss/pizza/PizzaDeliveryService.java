@@ -24,16 +24,5 @@ public class PizzaDeliveryService
     {
         return pizzeriaService.makePizza(pizza) + "Your order should arrive soon";
     }
-    @PostConstruct
-    public void order()
-    {
-        System.out.println("Your order is");
-    }
-
-    @PreDestroy
-    public void orderData()
-    {
-        System.out.println("Your order has been received");
-    }
 
 }
