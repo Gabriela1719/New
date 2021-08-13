@@ -25,5 +25,5 @@ public class Pizzeria implements PizzeriaService
     @Override
     public String makePizza(Pizza pizza) {
         return getName() + " (" + getAdress() + ") \n" + pizza.getName()+"-"+pizza.getIngredients() +"\n";
-    }
+  }
 }
