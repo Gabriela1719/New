@@ -1,6 +1,6 @@
-package com.agency04.sbss.pizza;
+package com.agency04.sbss.pizza.Service;
 
-import org.springframework.stereotype.Component;
+import com.agency04.sbss.pizza.Model.Pizza;
 
 public interface PizzeriaService
 {

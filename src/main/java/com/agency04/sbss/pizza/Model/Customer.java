@@ -1,18 +1,23 @@
-package com.agency04.sbss.pizza;
+package com.agency04.sbss.pizza.Model;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class Customer
 {
+    private int id;
     private String username;
-
-    public Customer(String username)
+    public Customer(int id, String username)
     {
+        this.id = id;
         this.username = username;
     }
-    private Customer(){
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -22,4 +27,7 @@ public class Customer
     public void setUsername(String username) {
         this.username = username;
     }
+
+
+
 }

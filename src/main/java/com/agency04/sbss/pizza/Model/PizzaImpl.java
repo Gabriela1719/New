@@ -1,5 +1,6 @@
-package com.agency04.sbss.pizza;
+package com.agency04.sbss.pizza.Model;
 
+import com.agency04.sbss.pizza.Model.Pizza;
 import org.springframework.stereotype.Component;
 
 @Component
