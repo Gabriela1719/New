@@ -2,7 +2,7 @@ package com.agency04.sbss.pizza.Controller;
 
 import com.agency04.sbss.pizza.Model.Customer;
 import com.agency04.sbss.pizza.Model.Delivery;
-import com.agency04.sbss.pizza.Model.PizzaImpl;
+import com.agency04.sbss.pizza.Model.Pizza;
 import com.agency04.sbss.pizza.Service.CustomerService;
 import com.agency04.sbss.pizza.Service.DeliveryService;
 import com.agency04.sbss.pizza.Service.PizzeriaService;
@@ -21,19 +21,20 @@ public class PizzaController
     DeliveryService deliveryService;
     @Autowired
     PizzeriaService pizzeriaService;
-    private List<PizzaImpl> thePizza;
+    private List<Pizza> thePizza;
     @PostConstruct
     public void loadData() {
         thePizza = new ArrayList<>();
 
-        thePizza.add(new PizzaImpl("Margarita", "Tomato sauce, mozzarella, and oregano"));
-        thePizza.add(new PizzaImpl("Marinara", "Tomato sauce, garlic and basil"));
-        thePizza.add(new PizzaImpl("Quattro Stagioni", "Tomato sauce, mozzarella, mushrooms, ham, artichokes, olives, and oregano"));
-        thePizza.add(new PizzaImpl("Carbonara", "Tomato sauce, mozzarella, parmesan, eggs, and bacon"));
+        thePizza.add(new Pizza("Margarita", "Tomato sauce, mozzarella, and oregano"));
+        thePizza.add(new Pizza("Marinara", "Tomato sauce, garlic and basil"));
+        thePizza.add(new Pizza("Quattro Stagioni", "Tomato sauce, mozzarella, mushrooms, ham, artichokes, olives, and oregano"));
+        thePizza.add(new Pizza("Carbonara", "Tomato sauce, mozzarella, parmesan, eggs, and bacon"));
 
     }
+
     @GetMapping("/pizza")
-    public List<PizzaImpl> getPizza(){
+    public List<Pizza> getPizza(){
         return thePizza;
     }
 
@@ -53,29 +54,29 @@ public class PizzaController
     public Customer addCustomer(@RequestBody Customer theCustomer)
     {
         theCustomer.setId(0);
-        customerService.saveCustomer(theCustomer);
+        customerService.save(theCustomer);
         return theCustomer;
     }
     @PutMapping("/customer")
     public Customer updateCustomer(@RequestBody Customer theCustomer)
     {
-        customerService.saveCustomer(theCustomer);
+        customerService.save(theCustomer);
         return theCustomer;
     }
     @DeleteMapping("/customer/{customerId}")
     public String deleteCustomer(@PathVariable int customerId)
     {
-        customerService.deleteCustomer(customerId);
+        customerService.deleteById(customerId);
         return "Deleted customer id - " + customerId;
     }
     @PostMapping("/delivery/order")
-    public String deliverOrder(@RequestBody  Customer customer)
+    public String deliverOrder()
     {
-        return customerService.deliverOrder(customer)+ ", Your order is"+ thePizza;
+        return customerService.findAll()+ ", Your order is"+ thePizza;
     }
     @GetMapping("/delivery/list")
     public List<Delivery> getAllD()
     {
-        return deliveryService.getDelivery();
+        return deliveryService.findAll();
     }
 }

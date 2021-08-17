@@ -3,8 +3,11 @@ package com.agency04.sbss.pizza.Service;
 import com.agency04.sbss.pizza.Model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;;
+import org.springframework.stereotype.Component;
+
 import javax.annotation.PreDestroy;
+
+;
 
 @Component("pizzaDeliveryService")
 public class PizzaDeliveryService
@@ -29,4 +32,6 @@ public class PizzaDeliveryService
     {
         System.out.println("Your order has been received");
     }
+
+
 }

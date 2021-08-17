@@ -1,6 +1,5 @@
 package com.agency04.sbss.pizza.Model;
 
-import com.agency04.sbss.pizza.Model.Pizza;
 import com.agency04.sbss.pizza.Service.PizzeriaService;
 import org.springframework.beans.factory.annotation.Value;
 
