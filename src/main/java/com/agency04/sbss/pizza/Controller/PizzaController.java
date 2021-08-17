@@ -42,7 +42,7 @@ public class PizzaController
     public Customer getCustomer(@PathVariable int username)
     {
         List<Customer> theCustomer = new ArrayList<>();
-        theCustomer.add(new Customer(0,"Gabriela"));
+        //theCustomer.add(new Customer(0,"Gabriela"));
         return theCustomer.get(username);
     }
     @GetMapping("/pizzeria")

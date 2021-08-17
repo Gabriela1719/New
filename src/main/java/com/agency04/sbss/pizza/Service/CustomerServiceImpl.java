@@ -4,9 +4,12 @@ import com.agency04.sbss.pizza.Model.Customer;
 import com.agency04.sbss.pizza.Model.Pizza;
 import com.agency04.sbss.pizza.Repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service("customerService")
 public class CustomerServiceImpl implements CustomerService
 {
     private CustomerRepository customerRepository;

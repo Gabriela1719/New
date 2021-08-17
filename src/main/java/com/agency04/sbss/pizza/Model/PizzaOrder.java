@@ -2,7 +2,7 @@ package com.agency04.sbss.pizza.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "PizzaOrder")
+@Table(name = "pizzaOrder")
 public class PizzaOrder
 {
     @Id

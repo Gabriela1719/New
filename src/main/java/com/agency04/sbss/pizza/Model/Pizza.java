@@ -3,7 +3,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Pizza")
+@Table(name = "pizza")
 public class Pizza
 {
     @Id
