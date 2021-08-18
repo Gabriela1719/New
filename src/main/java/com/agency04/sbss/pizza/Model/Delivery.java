@@ -2,6 +2,7 @@ package com.agency04.sbss.pizza.Model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "delivery")
@@ -24,6 +25,21 @@ public class Delivery
         this.submissionDate = submissionDate;
     }
     public Delivery(){}
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(o == null) return false;
+        if (this.getClass() != o.getClass()) return false;
+        Delivery delivery = (Delivery) o;
+        return id == delivery.id
+                && (submissionDate.equals((delivery.submissionDate)));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(submissionDate);
+    }
 
     public Date getSubmissionDate() {
         return submissionDate;

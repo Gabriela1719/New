@@ -1,6 +1,7 @@
 package com.agency04.sbss.pizza.Model;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "customer")
@@ -22,6 +23,22 @@ public class Customer
         this.username = username;
     }
     public Customer() {}
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(o == null) return false;
+        if (this.getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return id == customer.id
+                && (username.equals((customer.username)))
+                && (phone.equals(customer.phone));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, phone);
+    }
 
     public String getUsername() {
         return username;
@@ -54,4 +71,6 @@ public class Customer
     public void setId(int id) {
         this.id = id;
     }
+
+
 }

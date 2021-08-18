@@ -24,17 +24,7 @@ public class DeliveryServiceImpl implements DeliveryService
     @Override
     public Delivery findById(int theId) {
         Optional<Delivery> result = deliveryRepository.findById(theId);
-
-        Delivery theDelivery = null;
-
-        if (result.isPresent()) {
-            theDelivery = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find pizza id - " + theId);
-        }
-
-        return theDelivery;
+        return result.get();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.agency04.sbss.pizza.Service;
 
 import com.agency04.sbss.pizza.Model.Customer;
-import com.agency04.sbss.pizza.Model.Pizza;
 import com.agency04.sbss.pizza.Repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,17 +26,7 @@ public class CustomerServiceImpl implements CustomerService
     @Override
     public Customer findById(int theId) {
         Optional<Customer> result = customerRepository.findById(theId);
-
-        Customer theCustomer = null;
-
-        if (result.isPresent()) {
-            theCustomer = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find Customer id - " + theId);
-        }
-
-        return theCustomer;
+        return result.get();
     }
 
     @Override

@@ -25,17 +25,7 @@ public class PizzaOrderServiceImpl implements  PizzaOrderService
     @Override
     public PizzaOrder findById(int theId) {
         Optional<PizzaOrder> result = pizzaOrderRepository.findById(theId);
-
-        PizzaOrder thePizzaOrder = null;
-
-        if (result.isPresent()) {
-            thePizzaOrder = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find pizza id - " + theId);
-        }
-
-        return thePizzaOrder;
+        return result.get();
     }
 
     @Override

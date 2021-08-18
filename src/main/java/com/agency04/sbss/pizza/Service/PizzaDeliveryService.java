@@ -4,12 +4,10 @@ import com.agency04.sbss.pizza.Model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PreDestroy;
-
-;
-
-@Component("pizzaDeliveryService")
+@Service("pizzaDeliveryService")
 public class PizzaDeliveryService
 {
     @Autowired
