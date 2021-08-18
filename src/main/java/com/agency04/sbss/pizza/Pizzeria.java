@@ -3,7 +3,8 @@ package com.agency04.sbss.pizza;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+import javax.annotation.PreDestroy;
+
 public class Pizzeria implements PizzeriaService
 {
     @Value("${foo.name}")
@@ -22,8 +23,8 @@ public class Pizzeria implements PizzeriaService
         return adress;
     }
 
-   @Override
+    @Override
     public String makePizza(Pizza pizza) {
-        return "\n'" + getName() + "' (" + getAdress() + ") is preparing your order: \n" + pizza;
-    }
+        return getName() + " (" + getAdress() + ") \n" + pizza.getName()+"-"+pizza.getIngredients() +"\n";
+  }
 }
