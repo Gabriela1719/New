@@ -5,11 +5,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "customer")
-public class Customer
-{
-    @Id
+public class Customer{
+    //@Id
     @GeneratedValue
     private int id;
+    @Id
     @Column(name = "userName")
     private String userName;
     @Column(name = "phone")

@@ -11,6 +11,7 @@ import java.util.Optional;
 @Service("customerService")
 public class CustomerServiceImpl implements CustomerService
 {
+
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
@@ -30,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService
             return result.get();
         }
         else {
-            throw new RuntimeException("Did not find Delivery id - " + username);
+            throw new RuntimeException("Did not find Customer " + username);
         }
     }
 
