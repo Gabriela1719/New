@@ -1,6 +1,7 @@
 package com.agency04.sbss.pizza.Service;
 
 import com.agency04.sbss.pizza.Model.Pizza;
+import com.agency04.sbss.pizza.Model.PizzaOrder;
 import com.agency04.sbss.pizza.Repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,20 +24,17 @@ public class PizzaServiceImpl implements PizzaService
     @PostConstruct
     @Override
     public List<Pizza> findAll() {
-
-            List<Pizza> thePizza;
-            thePizza = new ArrayList<>();
-            thePizza.add(new Pizza("Margarita", "Tomato sauce, mozzarella, and oregano"));
-            thePizza.add(new Pizza("Marinara", "Tomato sauce, garlic and basil"));
-            thePizza.add(new Pizza("Quattro Stagioni", "Tomato sauce, mozzarella, mushrooms, ham, artichokes, olives, and oregano"));
-            thePizza.add(new Pizza("Carbonara", "Tomato sauce, mozzarella, parmesan, eggs, and bacon"));
-
         return pizzaRepository.findAll();
     }
     @Override
     public Pizza findById(int theId) {
         Optional<Pizza> result = pizzaRepository.findById(theId);
-        return result.get();
+        if (result.isPresent()) {
+            return result.get();
+        }
+        else {
+            throw new RuntimeException("Did not find Pizza id - " + theId);
+        }
     }
 
     @Override

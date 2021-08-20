@@ -2,39 +2,37 @@ package com.agency04.sbss.pizza.Controller;
 
 import com.agency04.sbss.pizza.Model.Customer;
 import com.agency04.sbss.pizza.Service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/customer")
 public class CustomerController
 {
-    CustomerService customerService;
-    @GetMapping("/customer/{username}")
-    public Customer getCustomer(@PathVariable int username)
+    @Autowired
+    private CustomerService customerService;
+
+    @GetMapping("/{username}")
+    public String getCustomer(@PathVariable String username)
     {
-        List<Customer> theCustomer = new ArrayList<>();
-        return theCustomer.get(username);
+        Customer theCustomer = customerService.findById(username);
+        return theCustomer.getUserName();
+
     }
-    @PostMapping("/customer")
-    public Customer addCustomer(@RequestBody Customer theCustomer)
+    @PostMapping
+    public void addCustomer(@RequestBody Customer theCustomer)
     {
-        theCustomer.setId(0);
         customerService.save(theCustomer);
-        return theCustomer;
     }
-    @PutMapping("/customer")
+    @PutMapping
     public Customer updateCustomer(@RequestBody Customer theCustomer)
     {
         customerService.save(theCustomer);
         return theCustomer;
     }
-    @DeleteMapping("/customer/{customerId}")
-    public String deleteCustomer(@PathVariable int customerId)
+    @DeleteMapping("/delete/{userName}")
+    public void deleteCustomer(@PathVariable String userName)
     {
-        customerService.deleteById(customerId);
-        return "Deleted customer id - " + customerId;
+        customerService.deleteById(userName);
     }
 }

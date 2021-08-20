@@ -11,22 +11,27 @@ import java.util.Optional;
 @Service("customerService")
 public class CustomerServiceImpl implements CustomerService
 {
-    private CustomerRepository customerRepository;
-
     @Autowired
-    public CustomerServiceImpl(CustomerRepository theCustomerRepository) {
-        customerRepository = theCustomerRepository;
+    private CustomerRepository customerRepository;
+    @Autowired
+    public CustomerServiceImpl(CustomerRepository thecustomerRepository)
+    {
+        this.customerRepository = thecustomerRepository;
     }
-
     @Override
     public List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
     @Override
-    public Customer findById(int theId) {
-        Optional<Customer> result = customerRepository.findById(theId);
-        return result.get();
+    public Customer findById(String username) {
+        Optional<Customer> result = customerRepository.findById(username);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        else {
+            throw new RuntimeException("Did not find Delivery id - " + username);
+        }
     }
 
     @Override
@@ -34,9 +39,9 @@ public class CustomerServiceImpl implements CustomerService
         customerRepository.save(theCustomer);
     }
 
-    @Override
-    public void deleteById(int theId) {
-        customerRepository.deleteById(theId);
-    }
 
+    @Override
+    public void deleteById(String username) {
+        customerRepository.deleteById(username);
+    }
 }

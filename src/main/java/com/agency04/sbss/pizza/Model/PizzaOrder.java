@@ -5,14 +5,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-//@Table(name = "pizzaOrder")
+@Table(name = "pizzaOrder")
 public class PizzaOrder
 {
     @Id
     @GeneratedValue
     private int id;
     @Column(name = "size")
-    String size;
+    private Size size = Size.LARGE;
     @Column(name = "quantity")
     String quantity;
 
@@ -24,7 +24,7 @@ public class PizzaOrder
     @JoinColumn(name="pizza")
     private Pizza pizza;
 
-    public PizzaOrder(String size)
+    public PizzaOrder(Size size)
     {
         this.size = size;
     }
@@ -43,7 +43,7 @@ public class PizzaOrder
         return Objects.hash();
     }
 
-    public String getSize() {
+    public Size getSize() {
         return size;
     }
 
@@ -51,7 +51,7 @@ public class PizzaOrder
         return pizza;
     }
 
-    public void setSize(String size) {
+    public void setSize(Size size) {
         this.size = size;
     }
 

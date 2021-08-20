@@ -10,17 +10,18 @@ public class Customer
     @Id
     @GeneratedValue
     private int id;
-    @Column(name = "username")
-    private String username;
+    @Column(name = "userName")
+    private String userName;
     @Column(name = "phone")
     String phone;
     @OneToMany(mappedBy = "customer")
     private List<Delivery> deliveries;
 
-    public Customer(int id, String username)
+    public Customer(int id, String userName, String phone)
     {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
+        this.phone = phone;
     }
     public Customer() {}
 
@@ -31,21 +32,21 @@ public class Customer
         if (this.getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return id == customer.id
-                && (username.equals((customer.username)))
+                && (userName.equals((customer.userName)))
                 && (phone.equals(customer.phone));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, phone);
+        return Objects.hash(userName, phone);
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhone() {

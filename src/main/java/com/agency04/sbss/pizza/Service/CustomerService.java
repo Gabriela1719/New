@@ -1,16 +1,17 @@
 package com.agency04.sbss.pizza.Service;
 
 import com.agency04.sbss.pizza.Model.Customer;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-public interface CustomerService {
-
+@Service
+public interface CustomerService
+{
     public List<Customer> findAll();
 
-    public Customer findById(int theId);
+    public Customer findById(String username);
 
     public void save(Customer theCustomer);
 
-    public void deleteById(int theId);
+    public void deleteById(String username);
 }

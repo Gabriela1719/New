@@ -1,5 +1,6 @@
 package com.agency04.sbss.pizza.Service;
 
+import com.agency04.sbss.pizza.Model.Customer;
 import com.agency04.sbss.pizza.Model.Delivery;
 import com.agency04.sbss.pizza.Repository.DeliveryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,12 @@ public class DeliveryServiceImpl implements DeliveryService
     @Override
     public Delivery findById(int theId) {
         Optional<Delivery> result = deliveryRepository.findById(theId);
-        return result.get();
+        if (result.isPresent()) {
+            return result.get();
+        }
+        else {
+            throw new RuntimeException("Did not find Delivery id - " + theId);
+        }
     }
 
     @Override
