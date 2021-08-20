@@ -1,0 +1,47 @@
+package com.agency04.sbss.pizza.Service;
+
+import com.agency04.sbss.pizza.Model.Delivery;
+import com.agency04.sbss.pizza.Model.PizzaOrder;
+import com.agency04.sbss.pizza.Repository.PizzaOrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service("pizzaOrderService")
+public class PizzaOrderServiceImpl implements  PizzaOrderService
+{
+    PizzaOrderRepository pizzaOrderRepository;
+    @Autowired
+    public PizzaOrderServiceImpl(PizzaOrderRepository thePizzaOrderRepository) {
+        pizzaOrderRepository = thePizzaOrderRepository;
+    }
+
+    @Override
+    public List<PizzaOrder> findAll() {
+        return pizzaOrderRepository.findAll();
+    }
+
+    @Override
+    public PizzaOrder findById(int theId) {
+        Optional<PizzaOrder> result = pizzaOrderRepository.findById(theId);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        else {
+            throw new RuntimeException("Did not find PizzaOrder id - " + theId);
+        }
+    }
+
+    @Override
+    public void save(PizzaOrder thePizzaOrder) {
+        pizzaOrderRepository.save(thePizzaOrder);
+    }
+
+    @Override
+    public void deleteById(int theId) {
+        pizzaOrderRepository.deleteById(theId);
+    }
+
+}

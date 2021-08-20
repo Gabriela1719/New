@@ -1,13 +1,13 @@
-package com.agency04.sbss.pizza;
+package com.agency04.sbss.pizza.Service;
 
+import com.agency04.sbss.pizza.Model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-
-@Component("pizzaDeliveryService")
+@Service("pizzaDeliveryService")
 public class PizzaDeliveryService
 {
     @Autowired
@@ -20,19 +20,16 @@ public class PizzaDeliveryService
     }
 
 
-
     public String orderPizza(Pizza pizza)
     {
         return pizzeriaService.makePizza(pizza) + "Your order should arrive soon";
     }
-    @PostConstruct
-    public void order()
-    {
-        System.out.println("Your order is preparing");
-    }
+
     @PreDestroy
     public void orderData()
     {
         System.out.println("Your order has been received");
     }
+
+
 }
