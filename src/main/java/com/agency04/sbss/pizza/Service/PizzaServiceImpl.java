@@ -12,8 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("PizzaService")
-public class PizzaServiceImpl implements PizzaService
-{
+public class PizzaServiceImpl implements PizzaService {
     private PizzaRepository pizzaRepository;
 
     @Autowired
@@ -21,18 +20,17 @@ public class PizzaServiceImpl implements PizzaService
         pizzaRepository = thePizzaRepository;
     }
 
-    @PostConstruct
     @Override
     public List<Pizza> findAll() {
         return pizzaRepository.findAll();
     }
+
     @Override
     public Pizza findById(int theId) {
         Optional<Pizza> result = pizzaRepository.findById(theId);
         if (result.isPresent()) {
             return result.get();
-        }
-        else {
+        } else {
             throw new RuntimeException("Did not find Pizza id - " + theId);
         }
     }
@@ -45,6 +43,14 @@ public class PizzaServiceImpl implements PizzaService
     @Override
     public void deleteById(int theId) {
         pizzaRepository.deleteById(theId);
+    }
+
+    @PostConstruct
+    public Pizza pizzaData() {
+        Pizza thePizza;
+        thePizza = pizzaRepository.save(new Pizza("Margarita", "Tomato sauce, mozzarella, and oregano"));
+        thePizza = pizzaRepository.save(new Pizza("Marinara", "Tomato sauce, garlic and basil"));
+        return thePizza;
     }
 
 }
